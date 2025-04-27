@@ -32,7 +32,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        Superstar
+        Shravan Taleki
       </motion.h1>
 
       {/* Title */}
