@@ -22,7 +22,7 @@ export default function Projects() {
     },
     {
       title: "Age and Gender Detection with LLM Integration",
-      date: "Jan 2024 – Mar 2024",
+      date: "Nov 2024 – Jan 2025",
       domain: "Computer Vision",
       model: "CNN + OpenCV + BLIP",
       summary:
@@ -46,11 +46,8 @@ export default function Projects() {
 
       {/* Animated Background Circles */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        {/* First Circle */}
         <div className="animate-float bg-[#00FFF0] opacity-30 rounded-full w-48 h-48 absolute top-40 left-16"></div>
-        {/* Second Circle - Moved to the left side */}
         <div className="animate-float bg-[#00FFF0] opacity-40 rounded-full w-64 h-64 absolute top-32 left-8"></div>
-        {/* Third Circle - Bottom right corner */}
         <div className="animate-float bg-[#00FFF0] opacity-50 rounded-full w-72 h-72 absolute top-60 right-10"></div>
       </div>
 
@@ -61,7 +58,7 @@ export default function Projects() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <span className="typewriter">Project Experience</span>
+        <span className="typewriter">Projects</span>
       </motion.h2>
 
       {/* Project Cards */}
@@ -81,9 +78,6 @@ export default function Projects() {
             <p><span className="text-[#00FFF0] font-semibold">Model Used:</span> {proj.model}</p>
             <p className="mt-2 text-gray-300">{proj.summary}</p>
             <p className="mt-4 text-sm text-gray-400"><span className="text-[#00FFF0] font-semibold">Tech Used:</span> {proj.tech}</p>
-            <button className="mt-4 p-2 rounded-full bg-[#00FFF0] text-black hover:bg-[#00C8B3] transition duration-300 shadow-lg">
-              View Details
-            </button>
           </motion.div>
         ))}
       </div>

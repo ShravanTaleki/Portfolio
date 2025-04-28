@@ -4,16 +4,25 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col justify-start items-center px-6 pt-20 pb-10 text-white bg-[#0a0f29] relative"
+      className="min-h-screen flex flex-col justify-start items-center px-6 pt-20 pb-10 text-white relative overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #0a0f29, #1e293b, #0a0f29)",
+        backgroundSize: "400% 400%",
+        animation: "gradientMove 20s ease infinite",
+      }}
     >
-      {/* Title */}
+      {/* Floating elements and background animation */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#00FFF044] to-transparent opacity-20 blur-2xl pointer-events-none" />
+
+      {/* Title with Typing Effect */}
       <motion.h2
-        className="text-4xl font-extrabold text-[#00FFF0] mb-8 text-center"
+        className="text-5xl font-extrabold text-[#00FFF0] mb-12 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
+        style={{ paddingTop: "3rem" }}  // Pushes the title down a bit
       >
-        About Me
+        <span className="typewriter">About Me</span>
       </motion.h2>
 
       {/* Internship Experience Section */}
@@ -41,17 +50,13 @@ export default function About() {
         transition={{ delay: 0.4 }}
       >
         <h3 className="text-2xl font-bold text-[#00FFF0] mb-4">Technical Skills</h3>
-        <div className="grid grid-cols-2 gap-6 text-gray-300 text-sm">
-          <div>
-            <p><span className="text-[#00FFF0] font-semibold">Languages:</span> Python, Java, C, C++</p>
-            <p><span className="text-[#00FFF0] font-semibold">Web Dev:</span> MERN Stack, HTML, CSS, JavaScript</p>
-            <p><span className="text-[#00FFF0] font-semibold">ML/AI:</span> SBERT, Pandas, NLTK, TensorFlow, OpenCV</p>
-          </div>
-          <div>
-            <p><span className="text-[#00FFF0] font-semibold">Data Analytics:</span> EDA, Visualization, NumPy, Matplotlib</p>
-            <p><span className="text-[#00FFF0] font-semibold">Databases:</span> SQL, MongoDB</p>
-            <p><span className="text-[#00FFF0] font-semibold">Tools:</span> Git, GitHub, Streamlit, Gradio</p>
-          </div>
+        <div className="text-gray-300 text-sm space-y-2">
+          <p><span className="text-[#00FFF0] font-semibold">Languages:</span> Python, Java, C, C++</p>
+          <p><span className="text-[#00FFF0] font-semibold">Web Dev:</span> MERN Stack, HTML, CSS, JavaScript</p>
+          <p><span className="text-[#00FFF0] font-semibold">ML/AI:</span> SBERT, Pandas, NLTK, TensorFlow, OpenCV</p>
+          <p><span className="text-[#00FFF0] font-semibold">Data Analytics:</span> EDA, Visualization, NumPy, Matplotlib</p>
+          <p><span className="text-[#00FFF0] font-semibold">Databases:</span> SQL, MongoDB</p>
+          <p><span className="text-[#00FFF0] font-semibold">Tools:</span> Git, GitHub, Streamlit, Gradio</p>
         </div>
       </motion.div>
 
@@ -80,21 +85,17 @@ export default function About() {
         transition={{ delay: 0.6 }}
       >
         <h3 className="text-2xl font-bold text-[#00FFF0] mb-4">Specialization and Tools</h3>
-        <div className="grid grid-cols-2 gap-6 text-gray-300 text-sm">
-          <div>
-            <p><span className="text-[#00FFF0] font-semibold">Tools:</span> Anaconda / Jupyter Notebooks, Node.js, MongoDB Compass & Postman</p>
-            <p><span className="text-[#00FFF0] font-semibold">Cloud:</span> Microsoft Azure & Docker</p>
-            <p><span className="text-[#00FFF0] font-semibold">AI/ML:</span> TensorFlow & PyTorch</p>
-          </div>
-          <div>
-            <p><span className="text-[#00FFF0] font-semibold">Data Visualization:</span> Power BI & Tableau</p>
-            <p><span className="text-[#00FFF0] font-semibold">Code Editor:</span> VS Code</p>
-            <p><span className="text-[#00FFF0] font-semibold">Version Control:</span> Git & GitHub</p>
-          </div>
+        <div className="text-gray-300 text-sm space-y-2">
+          <p><span className="text-[#00FFF0] font-semibold">Tools:</span> Anaconda / Jupyter Notebooks, Node.js, MongoDB Compass & Postman</p>
+          <p><span className="text-[#00FFF0] font-semibold">Cloud:</span> Microsoft Azure & Docker</p>
+          <p><span className="text-[#00FFF0] font-semibold">AI/ML:</span> TensorFlow & PyTorch</p>
+          <p><span className="text-[#00FFF0] font-semibold">Data Visualization:</span> Power BI & Tableau</p>
+          <p><span className="text-[#00FFF0] font-semibold">Code Editor:</span> VS Code</p>
+          <p><span className="text-[#00FFF0] font-semibold">Version Control:</span> Git & GitHub</p>
         </div>
       </motion.div>
 
-      {/* Custom Animation for Background */}
+      {/* Custom Animation */}
       <style jsx="true">{`
         @keyframes gradientMove {
           0% { background-position: 0% 50%; }
@@ -102,14 +103,33 @@ export default function About() {
           100% { background-position: 0% 50%; }
         }
 
-        .about-background {
-          background: linear-gradient(45deg, #1f1f1f, #1a1a1a, #2c2c2c);
-          animation: gradientMove 10s ease infinite;
-          background-size: 400% 400%;
+        @keyframes typing {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+
+        .typewriter {
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 2px solid #00FFF0;
+          width: 0;
+          animation: typing 1.5s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+          0%, 100% {
+            border-color: transparent;
+          }
+          50% {
+            border-color: #00FFF0;
+          }
         }
       `}</style>
-
-      <div className="absolute inset-0 bg-about-background z-0 opacity-50"></div>
     </section>
   );
 }
